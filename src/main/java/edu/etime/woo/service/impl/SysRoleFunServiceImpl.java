@@ -35,16 +35,10 @@ public class SysRoleFunServiceImpl implements SysRoleFunService {
         //首先删除对应角色的权限信息
         rst += mapper.deleteByRoleId(sysRoleFunList.get(0).getRoleid());
 
-        System.out.println(sysRoleFunList.get(0).getRoleid());
-        System.out.println("删除："+rst);
-
         //然后增加数据
         for (SysRoleFun item:sysRoleFunList) {
             rst += mapper.insert(item);
         }
-
-        System.out.println("增加："+rst);
-
         return rst;
     }
 }

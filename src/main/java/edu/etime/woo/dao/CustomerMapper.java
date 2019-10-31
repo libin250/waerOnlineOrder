@@ -10,7 +10,7 @@ import java.util.List;
 public interface CustomerMapper {
 //    int deleteByPrimaryKey(String cusid);
 //
-        int insert(Customer record);
+//    int insert(Customer record);
 //
 //    int insertSelective(Customer record);
 //
@@ -20,9 +20,13 @@ public interface CustomerMapper {
 //
 //    int updateByPrimaryKey(Customer record);
 
-    List<Customer> findAllCustomer();
+    List<Customer> findAll();
 
+    //根据客户的openid获取客户的信息
     List<Customer> selectCustomerByOpenid(String openid);
 
+    
+    List<Customer> findAllCustomer();
 
+    int insert(Customer cus);
 }

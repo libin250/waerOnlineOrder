@@ -28,4 +28,6 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     public String[] selectorderDetail(String openid) {
         return orderDetailMapper.selectorderDetail(openid,null);
     }
+
+
 }

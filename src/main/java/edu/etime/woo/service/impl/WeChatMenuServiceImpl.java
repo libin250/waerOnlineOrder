@@ -12,7 +12,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- *
+ *微信查询菜品
+ * @author zm
  */
 @Service
 public class WeChatMenuServiceImpl implements WeChatMenuService {

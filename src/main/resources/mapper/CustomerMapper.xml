@@ -15,26 +15,17 @@
     from customer
     where CUSID = #{cusid,jdbcType=VARCHAR}
   </select>
-<!-- 后台显示的客户列表-->
-  <select id="findAllCustomer" resultMap="BaseResultMap" parameterType="edu.etime.woo.pojo.Customer">
-  SELECT * FROM Customer
-  </select>
 
-  <!--根据客户的openid获取客户信息-->
-  <select id="selectCustomerByOpenid" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
-    <include refid="Base_Column_List" />
-    from customer
-    where openid = #{openid,jdbcType=VARCHAR}
+  <select id="findAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+  SELECT * FROM Customer
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from customer
     where CUSID = #{cusid,jdbcType=VARCHAR}
   </delete>
-
   <insert id="insert" parameterType="edu.etime.woo.pojo.Customer" >
-    insert into customer (CUSID, OPENID, NICKNAMEl
+    insert into customer (CUSID, OPENID, NICKNAME
       )
     values (#{cusid,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}
       )
@@ -82,4 +73,20 @@
       NICKNAME = #{nickname,jdbcType=VARCHAR}
     where CUSID = #{cusid,jdbcType=VARCHAR}
   </update>
+
+  <!-- 后台显示的客户列表-->
+  <select id="findAllCustomer" resultMap="BaseResultMap" parameterType="edu.etime.woo.pojo.Customer">
+    SELECT
+    <include refid="Base_Column_List" />
+     FROM customer
+  </select>
+
+  <!--根据客户的openid获取客户信息-->
+  <select id="selectCustomerByOpenid" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from customer
+    where openid = #{openid,jdbcType=VARCHAR}
+  </select>
+
 </mapper>

@@ -1,12 +1,5 @@
 package edu.etime.woo.controller.wechatcontroller;
 
-import com.alibaba.fastjson.JSONObject;
-import edu.etime.woo.pojo.Customer;
-import edu.etime.woo.service.interfaces.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,13 +9,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import com.alibaba.fastjson.JSONObject;
+import edu.etime.woo.pojo.Customer;
+import edu.etime.woo.service.interfaces.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+
 /**
  * 微信客户管理，包含客户的注册和openid获取
  *
  */
+
 @Controller
-@RequestMapping("wx/customer")
-public class WeChatCusromerController {
+@RequestMapping("wechat")
+public class WxCustomerController {
+
     @Autowired
     CustomerService customerService;
 
@@ -88,7 +94,7 @@ public class WeChatCusromerController {
     }
 
 
-    @RequestMapping("/login")
+    @RequestMapping("/login/cp")
     @ResponseBody
     public String login(Customer cus){
         List<Customer> list = customerService.selectCustomerByOpenid(cus.getOpenid());
@@ -96,6 +102,7 @@ public class WeChatCusromerController {
         if(list.size()>0){
             //用户已在数据库中存在。这里不需要做其他的处理
             rtn=1;
+
         }else{
             //用户不存在，那么需要将用户保存到数据库中
             cus.setCusid(UUID.randomUUID().toString());

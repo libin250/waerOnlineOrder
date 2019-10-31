@@ -1,7 +1,7 @@
 package edu.etime.woo.service.interfaces;
 
+import edu.etime.woo.dto.GoodsDto;
 import edu.etime.woo.dto.OrdersDto;
-import edu.etime.woo.pojo.Orders;
 import edu.etime.woo.tools.Pagers;
 
 import java.util.List;
@@ -29,11 +29,12 @@ public interface OrdersService {
      */
     Pagers<OrdersDto> selectListPage(OrdersDto odto, int pagenum, int pagesize);
 
-
     /**
-     * 添加订单
-     * @param orders
+     * 下订单接口
+     * @param goodslist 订单商品明细
+     * @param openid 客户的openid
+     * @param totalprice 订单总价
      * @return
      */
-    int insert(Orders orders);
+    public int insertOrder(List<GoodsDto> goodslist, String openid, double totalprice);
 }

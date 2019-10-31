@@ -48,7 +48,6 @@ public class LoginController {
         SysUser user = (SysUser) session.getAttribute("LOGIN_USER");
         //根据当前角色查询权限
         List<SysFun> list = userService.selectFunByRoleId(user.getRoleid());
-        System.out.println(list.size());
         model.addAttribute("funlist",list);
         return "/left";
     }

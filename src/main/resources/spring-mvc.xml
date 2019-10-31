@@ -43,6 +43,9 @@
     </bean>
 
 
+
+
+
     <mvc:interceptors>
         <!-- 按照配置的顺序执行拦截器 -->
         <mvc:interceptor>
@@ -74,7 +77,8 @@
                 LoginInterceptor的preHandler方法里面获取不拦截的请求uri地址了(优选) -->
             <mvc:exclude-mapping path="/login/login" />
             <mvc:exclude-mapping path="/login/tologin"/>
-
+            <mvc:exclude-mapping path="/wechat/*"/>
+            <mvc:exclude-mapping path="/img/*"/>
             <bean class="edu.etime.woo.intercepter.LoginIntercepter"></bean>
         </mvc:interceptor>
     </mvc:interceptors>

@@ -143,6 +143,11 @@
 
 
 <div class="row-fluid">
+
+    <ul class="breadcrumb">
+        <li><a href="#">系统管理</a> <span class="divider">/</span></li>
+        <li class="active">系统功能管理</li>
+    </ul>
     <!-- 系统功能树 begin -->
     <div class="span3" id="menu" style="margin-left: 5px;">
         <dl>

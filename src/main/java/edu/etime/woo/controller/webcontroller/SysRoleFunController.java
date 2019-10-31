@@ -39,7 +39,6 @@ public class SysRoleFunController {
         List<SysFunDto> funlist = service.selectByRoleId(roleid);
         model.addAttribute("msg",msg);
         model.addAttribute("funlist",funlist);
-        System.out.println(funlist.size());
         return "sys/role/distribute";
     }
 

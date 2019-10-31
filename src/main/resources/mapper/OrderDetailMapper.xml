@@ -117,6 +117,8 @@
           and  orderid=#{orderid}
       </if>
   </select>
+
+    <!--根据openid查订单id-->
     <select id="selectorderDetail" resultType="java.lang.String">
         select b.orderid FROM customer a INNER JOIN orders b ON a.CUSID = b.CUSID WHERE 0=0
         <if test="openid!=null and openid!=''">
@@ -133,7 +135,7 @@
         SELECT COUNT(orderid) FROM orders
         WHERE ordertime &lt; (
         SELECT ordertime FROM orders WHERE orderid = #{orderid})
-        AND ORDERSTATE = 2
+        AND ORDERSTATE = 1
     </select>
 
 </mapper>

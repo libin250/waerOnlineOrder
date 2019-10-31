@@ -12,7 +12,7 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService{
 
     @Autowired
-    CustomerMapper mapper;
+    private CustomerMapper mapper;
 
     @Override
     public List<Customer> findAllCustomer() {

@@ -10,11 +10,22 @@ import edu.etime.woo.pojo.Goods;
 public class GoodsDto extends Goods {
     private String gtname;
 
+    //客户点菜的数量，默认值为0份
+    private Integer gcount = 0;
+
     public String getGtname() {
         return gtname;
     }
 
     public void setGtname(String gtname) {
         this.gtname = gtname == null ? null : gtname.trim();
+    }
+
+    public Integer getGcount() {
+        return gcount;
+    }
+
+    public void setGcount(Integer gcount) {
+        this.gcount = gcount;
     }
 }

@@ -1,7 +1,6 @@
 package edu.etime.woo.controller.wechatcontroller;
 
 import edu.etime.woo.dto.OrderDetailDto;
-import edu.etime.woo.pojo.Orders;
 import edu.etime.woo.service.interfaces.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,10 +18,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/wechat")
 public class WeChatOrderDetailController {
-
     @Autowired
     private OrderDetailService service;
-
 
     /**
      * 查询微信订单详情方法
@@ -38,6 +35,7 @@ public class WeChatOrderDetailController {
             String orderid = orderids[i];
             list.add(service.selectList(orderids[i]).get(0));
         }
-       return list;
+        return list;
     }
+
 }
