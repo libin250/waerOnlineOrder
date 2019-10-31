@@ -26,13 +26,14 @@
             <div class="control-group">
                 <label class="control-label" for="username">用户名:</label>
                 <div class="controls">
-                    <input id="username" type="text" name="username" />
+                    <input id="username" type="text" name="username" style="width: 220px;height: 28px;border-radius: 2px;"/>
                 </div>
             </div>
+
             <div class="control-group">
                 <label class="control-label" for="usertruename">真实姓名:</label>
                 <div class="controls">
-                    <input id="usertruename" type="text" name="usertruename" />
+                    <input id="usertruename" type="text" name="usertruename" style="width: 220px;height: 28px;border-radius: 2px;"/>
                 </div>
             </div>
             <div class="control-group">
@@ -54,7 +55,7 @@
             <div class="control-group">
                 <label class="control-label" for="userpwd">用户密码:</label>
                 <div class="controls">
-                    <input id="userpwd" type="password" name="userpwd" />
+                    <input id="userpwd" type="password" name="userpwd" style="width: 220px;height: 28px;border-radius: 2px;"/>
                 </div>
             </div>
             <div class="control-group">

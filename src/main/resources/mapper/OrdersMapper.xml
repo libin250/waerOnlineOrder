@@ -110,7 +110,7 @@
         <if test="nickname!=null and nickname!='' ">
             and nickname like #{nickname}
         </if>
-        ORDER by ORDERTIME
+        ORDER by ORDERSTATE ASC
     </select>
 
 </mapper>

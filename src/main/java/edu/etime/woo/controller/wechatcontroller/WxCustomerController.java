@@ -42,12 +42,11 @@ public class WxCustomerController {
     @RequestMapping("/login")
     @ResponseBody
     public String login(String code) {
-        /**
-         * appid=wxc449411fab1b45b8(微信小程序的id)
-         * secret=645cc9ba8cf29fc5fa683047e3ed859（每个人的密钥，需要到微信小程序平台中去获取）
-         * js_code:小程序传递过来的code属性
-         */
-        String WX_URL = "https://api.weixin.qq.com/sns/jscode2session?appid=wxaad0703b177762b4&secret=24559ad2f297296c025f538e23acd050&js_code="
+
+//        AppID：wxa28f62f9a86af88e
+//        秘钥：6c61300011ef10a7a9bffe9a0795b722
+
+        String WX_URL = "https://api.weixin.qq.com/sns/jscode2session?appid=wxa28f62f9a86af88e&secret=6c61300011ef10a7a9bffe9a0795b722&js_code="
                 + code + "&grant_type=authorization_code";
         String returnvalue = GET(WX_URL);
         JSONObject json = JSONObject.parseObject(returnvalue);

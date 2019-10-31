@@ -1,4 +1,4 @@
-package edu.etime.woo.controller.wechatcontroller;
+package edu.etime.woo.controller.webcontroller;
 
 
 import edu.etime.woo.pojo.Customer;
