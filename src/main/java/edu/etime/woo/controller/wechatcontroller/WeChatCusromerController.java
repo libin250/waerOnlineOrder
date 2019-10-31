@@ -95,6 +95,7 @@ public class WeChatCusromerController {
         Integer rtn = 1;
         if(list.size()>0){
             //用户已在数据库中存在。这里不需要做其他的处理
+            rtn=1;
         }else{
             //用户不存在，那么需要将用户保存到数据库中
             cus.setCusid(UUID.randomUUID().toString());
