@@ -1,0 +1,61 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"-->
+        <!--"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">-->
+<!--<generatorConfiguration>-->
+    <!--&lt;!&ndash; 数据库驱动包位置 &ndash;&gt;-->
+    <!--<classPathEntry location="f:\generator\mysql-connector-java-5.1.26-bin.jar"/>-->
+    <!--<context id="DB2Tables" targetRuntime="MyBatis3">-->
+        <!--<commentGenerator>-->
+            <!--<property name="suppressAllComments" value="true"/>-->
+        <!--</commentGenerator>-->
+        <!--&lt;!&ndash; 数据库链接URL、用户名、密码 &ndash;&gt;-->
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+                        <!--connectionURL="jdbc:mysql://192.168.15.250:3306/yqxdc?characterEncoding=UTF-8"-->
+                        <!--userId="root" password="123456">-->
+        <!--</jdbcConnection>-->
+        <!--<javaTypeResolver>-->
+            <!--<property name="forceBigDecimals" value="false"/>-->
+        <!--</javaTypeResolver>-->
+        <!--&lt;!&ndash; 生成模型的包名和位置 &ndash;&gt;-->
+        <!--<javaModelGenerator targetPackage="edu.etime.woo.pojo" targetProject="f:\j2ee\waerOnlineOrder\src\main\java">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+            <!--<property name="trimStrings" value="true"/>-->
+        <!--</javaModelGenerator>-->
+        <!--&lt;!&ndash; 生成的映射文件包名和位置 &ndash;&gt;-->
+        <!--<sqlMapGenerator targetPackage="mapper" targetProject="f:\j2ee\waerOnlineOrder\src\main\resources">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</sqlMapGenerator>-->
+        <!--&lt;!&ndash; 生成DAO的包名和位置 &ndash;&gt;-->
+        <!--<javaClientGenerator type="XMLMAPPER" targetPackage="edu.etime.woo.dao"-->
+                             <!--targetProject="f:\j2ee\waerOnlineOrder\src\main\java">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</javaClientGenerator>-->
+        <!--&lt;!&ndash; 要生成那些表(更改tableName和domainObjectName就可以) &ndash;&gt;-->
+        <!--<table tableName="orders" domainObjectName="Orders" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"/>-->
+        <!--<table tableName="customer" domainObjectName="Customer" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"/>-->
+        <!--<table tableName="goods" domainObjectName="Goods" enableCountByExample="false" enableUpdateByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>-->
+        <!--<table tableName="goodstype" domainObjectName="GoodsType" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"/>-->
+        <!--<table tableName="orderdetail" domainObjectName="OrderDetail" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"/>-->
+        <!--<table tableName="sysrolefun" domainObjectName="SysRoleFun" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"/>-->
+        <!--<table tableName="sysfun" domainObjectName="SysFun" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"/>-->
+        <!--<table tableName="sysrole" domainObjectName="SysRole" enableCountByExample="false" enableUpdateByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>-->
+        <!--<table tableName="sysuser" domainObjectName="SysUser" enableCountByExample="false" enableUpdateByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>-->
+
+
+    <!--</context>-->
+<!--</generatorConfiguration>-->

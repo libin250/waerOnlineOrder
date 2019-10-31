@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.itop {
+    height: 60px;
+    width: 100%;
+    background: rgb(89, 103, 131);
+}
+
+.itop_left {
+    float: left;
+    width: 100px;
+    height: 50px;
+    margin-top: 2px;
+    margin-left: 10px;
+}
+
+.itop_left_h1_1 {
+    float: left;
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #BCC4CC;
+    font-family: "Cambria Math";
+    font-style: italic;
+}
+
+.itop_left_h1_2 {
+    float: left;
+    width: 400px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    font-family: "Cambria Math";
+    font-weight: bold;
+}
+
+.itop_right {
+    float: right;
+    width: 200px;
+    height: 60px;
+}
+
+.itop_right_r {
+    float: right;
+    width: 100px;
+    height: 50px;
+    margin-top: 10px;
+    margin-right: 30px;
+    color: white;
+}
+
+.itop_right_l {
+    float: left;
+    width: 10px;
+    height: 30px;
+    background: white;
+    margin-top: 10px;
+}
+
+.main {
+    width: 100%;
+    border-top: #BCC4CC 3px solid;
+    height: 100%;
+}
+
+.main_left {
+    height: 845px;
+    border-right: #BCC4CC 2px solid;
+}
+
+.li1 {
+    list-style: none;
+    width: 300px;
+    height: 15px;
+    line-heigne:15px;
+    font-size: 16pt;
+    font-weight: bold;
+    margin-left: 50px;
+    margin-top:5px;
+}
+
+.li2 {
+    list-style: none;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    margin-top:5px;
+    font-size: 14pt;
+    margin-left: 50px;
+}
+
+.li1 a {
+    text-decoration: none;
+    color: black;
+}
+
+.li2 a {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.hidediv {
+    display: block;
+}
+

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.etime.woo.dao.SysRoleFunMapper" >
+  <resultMap id="BaseResultMap" type="edu.etime.woo.pojo.SysRoleFun" >
+    <id column="ROLEFUNID" property="rolefunid" jdbcType="VARCHAR" />
+    <result column="ROLEID" property="roleid" jdbcType="VARCHAR" />
+    <result column="FUNID" property="funid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ROLEFUNID, ROLEID, FUNID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sysrolefun
+    where ROLEFUNID = #{rolefunid,jdbcType=VARCHAR}
+  </select>
+
+<!--  根据roleid查询功能列表  -->
+  <select id="selectByRoleId" resultType="edu.etime.woo.dto.SysFunDto" parameterType="java.lang.String" >
+    select b.roleid,a.funid,a.funname,a.funpid,b.rolefunid from sysfun as a
+    left outer join sysrolefun as b on a.funid = b.funid and roleid = #{roleid}
+    where a.funstate = 1
+  </select>
+
+<!--  根据roleid删除-->
+  <delete id="deleteByRoleId" parameterType="java.lang.String">
+    delete  from sysrolefun
+    where roleid = '${roleid}'
+  </delete>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sysrolefun
+    where ROLEFUNID = #{rolefunid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="edu.etime.woo.pojo.SysRoleFun">
+    insert into sysrolefun (ROLEFUNID, ROLEID, FUNID
+      )
+    values (#{rolefunid,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}, #{funid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.etime.woo.pojo.SysRoleFun" >
+    insert into sysrolefun
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rolefunid != null" >
+        ROLEFUNID,
+      </if>
+      <if test="roleid != null" >
+        ROLEID,
+      </if>
+      <if test="funid != null" >
+        FUNID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rolefunid != null" >
+        #{rolefunid,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="funid != null" >
+        #{funid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.etime.woo.pojo.SysRoleFun" >
+    update sysrolefun
+    <set >
+      <if test="roleid != null" >
+        ROLEID = #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="funid != null" >
+        FUNID = #{funid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROLEFUNID = #{rolefunid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.etime.woo.pojo.SysRoleFun" >
+    update sysrolefun
+    set ROLEID = #{roleid,jdbcType=VARCHAR},
+      FUNID = #{funid,jdbcType=VARCHAR}
+    where ROLEFUNID = #{rolefunid,jdbcType=VARCHAR}
+  </update>
+</mapper>

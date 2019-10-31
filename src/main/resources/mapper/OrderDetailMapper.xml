@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.etime.woo.dao.OrderDetailMapper">
+
+    <resultMap id="BaseResultMap" type="edu.etime.woo.pojo.OrderDetail">
+        <id column="ODID" property="odid" jdbcType="VARCHAR"/>
+        <result column="GID" property="gid" jdbcType="VARCHAR"/>
+        <result column="ORDERID" property="orderid" jdbcType="VARCHAR"/>
+        <result column="ODPRICE" property="odprice" jdbcType="DECIMAL"/>
+        <result column="ODCOUNT" property="odcount" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="BaseResultMapWithcoog" type="edu.etime.woo.dto.OrderDetailDto">
+        <result column="NICKNAME" property="nickname" jdbcType="VARCHAR"/>
+        <result column="GNAME" property="gname" jdbcType="VARCHAR"/>
+        <result column="GTIME" property="gtime" jdbcType="INTEGER"/>
+        <result column="ODPRICE" property="odprice" jdbcType="DECIMAL"/>
+        <result column="ODCOUNT" property="odcount" jdbcType="INTEGER"/>
+        <result column="ORDERTIME" property="ordertime" jdbcType="TIMESTAMP"/>
+        <result column="ORDERSTATE" property="orderstate" jdbcType="INTEGER"/>
+        <result column="ORDERTOTLEPRICE" property="ordertotleprice" jdbcType="DECIMAL"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+    ODID, GID, ORDERID, ODPRICE, ODCOUNT
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from orderdetail
+        where ODID = #{odid,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from orderdetail
+    where ODID = #{odid,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="edu.etime.woo.pojo.OrderDetail">
+    insert into orderdetail (ODID, GID, ORDERID, 
+      ODPRICE, ODCOUNT)
+    values (#{odid,jdbcType=VARCHAR}, #{gid,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR}, 
+      #{odprice,jdbcType=DECIMAL}, #{odcount,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="edu.etime.woo.pojo.OrderDetail">
+        insert into orderdetail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="odid != null">
+                ODID,
+            </if>
+            <if test="gid != null">
+                GID,
+            </if>
+            <if test="orderid != null">
+                ORDERID,
+            </if>
+            <if test="odprice != null">
+                ODPRICE,
+            </if>
+            <if test="odcount != null">
+                ODCOUNT,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="odid != null">
+                #{odid,jdbcType=VARCHAR},
+            </if>
+            <if test="gid != null">
+                #{gid,jdbcType=VARCHAR},
+            </if>
+            <if test="orderid != null">
+                #{orderid,jdbcType=VARCHAR},
+            </if>
+            <if test="odprice != null">
+                #{odprice,jdbcType=DECIMAL},
+            </if>
+            <if test="odcount != null">
+                #{odcount,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="edu.etime.woo.pojo.OrderDetail">
+        update orderdetail
+        <set>
+            <if test="gid != null">
+                GID = #{gid,jdbcType=VARCHAR},
+            </if>
+            <if test="orderid != null">
+                ORDERID = #{orderid,jdbcType=VARCHAR},
+            </if>
+            <if test="odprice != null">
+                ODPRICE = #{odprice,jdbcType=DECIMAL},
+            </if>
+            <if test="odcount != null">
+                ODCOUNT = #{odcount,jdbcType=INTEGER},
+            </if>
+        </set>
+        where ODID = #{odid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="edu.etime.woo.pojo.OrderDetail">
+    update orderdetail
+    set GID = #{gid,jdbcType=VARCHAR},
+      ORDERID = #{orderid,jdbcType=VARCHAR},
+      ODPRICE = #{odprice,jdbcType=DECIMAL},
+      ODCOUNT = #{odcount,jdbcType=INTEGER}
+    where ODID = #{odid,jdbcType=VARCHAR}
+  </update>
+
+    <select id="selectList" resultMap="BaseResultMapWithcoog" parameterType="java.lang.String">
+     select coog.nickname,coog.gname,coog.gtime,coog.odprice,
+     coog.odcount,coog.ordertime,coog.orderstate,coog.ordertotleprice
+     from (select cus.nickname,goods.gname,goods.gtime,orderdetail.odprice,orderdetail.odcount,
+     odid,cus.orderid,cus.ordertime,cus.orderstate,cus.ordertotleprice  from orderdetail inner join
+     goods on orderdetail.gid=goods.gid inner join (select  orderid,customer.nickname,orders.ordertime,
+     orders.orderstate,orders.ordertotleprice from customer inner join orders on customer.cusid=orders.cusid)
+      as cus on orderdetail.orderid=cus.orderid )as coog where  0=0
+      <if test="orderid!=null and orderid!=''">
+          and  orderid=#{orderid}
+      </if>
+  </select>
+    <select id="selectorderDetail" resultType="java.lang.String">
+        select b.orderid FROM customer a INNER JOIN orders b ON a.CUSID = b.CUSID WHERE 0=0
+        <if test="openid!=null and openid!=''">
+            and OPENID=#{openid}
+        </if>
+        <if test="orderstate!=null and orderstate!=''">
+            and b.orderstate = #{orderstate}
+        </if>
+        ORDER BY ordertime ASC
+    </select>
+
+    <!--查询订单位置-->
+    <select id="selectLocation" resultType="java.lang.Integer" parameterType="java.lang.String">
+        SELECT COUNT(orderid) FROM orders
+        WHERE ordertime &lt; (
+        SELECT ordertime FROM orders WHERE orderid = #{orderid})
+        AND ORDERSTATE = 2
+    </select>
+
+</mapper>
