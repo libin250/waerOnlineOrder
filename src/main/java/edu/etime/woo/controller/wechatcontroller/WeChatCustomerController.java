@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("wechat")
-public class WxCustomerController {
+public class WeChatCustomerController {
 
     @Autowired
     CustomerService customerService;
